@@ -1,4 +1,5 @@
-﻿using Middleware.Domain;
+﻿
+using Middleware.Domain;
 using Middleware.Infra;
 
 namespace Middleware.Application
@@ -26,12 +27,12 @@ namespace Middleware.Application
             return _userRepository.GetAll();
         }
 
-        public void GetUser(Guid id)
+        public User Get(Guid id)
         {
-            throw new NotImplementedException();
+            return _userRepository.Get(id);
         }
 
-        public void Update(User user)
+        public bool Update(User user)
         {
             throw new NotImplementedException();
         }

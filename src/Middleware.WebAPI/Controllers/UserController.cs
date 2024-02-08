@@ -33,11 +33,20 @@ namespace Middleware.WebAPI.Controllers
                 return BadRequest();
         }
 
-        [HttpGet("{id}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete([FromRoute] Guid id)
         {
             if (_userService.Delete(id))
                 return NoContent();
+            else
+                return BadRequest();
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get([FromRoute] Guid id)
+        {
+            if (_userService.Get(id) is User user)
+                return Ok(user);
             else
                 return BadRequest();
         }

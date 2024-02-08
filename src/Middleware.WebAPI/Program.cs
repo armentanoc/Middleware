@@ -1,4 +1,3 @@
-
 using Middleware.Application;
 using Middleware.Infra;
 

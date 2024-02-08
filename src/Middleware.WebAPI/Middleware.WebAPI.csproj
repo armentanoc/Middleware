@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Middleware.Application\Middleware.Application.csproj" />
-    <ProjectReference Include="..\Middleware.Infra\Middleware.Infra.csproj" />
+    <ProjectReference Include="..\Middleware.Domain\Middleware.Domain.csproj" />
   </ItemGroup>
 
 </Project>
