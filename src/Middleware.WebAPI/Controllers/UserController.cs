@@ -11,12 +11,15 @@ namespace Middleware.WebAPI.Controllers
     {
         private readonly IUserService _userService;
 
-        public UserController(ILogger<UserController> logger, IUserService userService)
+        public UserController(
+            ILogger<UserController> logger, 
+            IUserService userService
+            )
         {
             _userService = userService;
         }
 
-        [HttpGet("all")]
+        [HttpGet]
         public ActionResult<IEnumerable<User>> GetAll()
         {
             var users = _userService.GetAll();
@@ -24,31 +27,38 @@ namespace Middleware.WebAPI.Controllers
         }
 
         [HttpPost(Name = "AddUser")]
-        public IActionResult AddUser([Required] string name, [Required] string password, [Required] bool isAdmin)
+        public IActionResult AddUser(
+            [Required] string name, 
+            [Required][EmailAddress] string email
+            )
         {
-            var user = new User(name, password, isAdmin);
+            var user = new User(name, email);
             if(_userService.Add(user))
                 return Ok(user);
             else
                 return BadRequest();
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] int id)
-        {
-            if (_userService.Delete(id))
-                return NoContent();
-            else
-                return BadRequest();
-        }
-
         [HttpGet("{id}")]
-        public ActionResult Get([FromRoute] int id)
+        public ActionResult Get(
+            [FromRoute] int id
+            )
         {
             if (_userService.Get(id) is not User user)
                 throw new Exception($"User with id {id} not found");
             return Ok(user);
             
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(
+            [FromRoute] int id
+            )
+        {
+            if (_userService.Delete(id))
+                return NoContent();
+            else
+                return BadRequest();
         }
     }
 }
