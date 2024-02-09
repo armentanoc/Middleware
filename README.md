@@ -5,6 +5,8 @@
 Este projeto é uma Web API construída usando ASP.NET Core, que fornece operações básicas para gerenciar usuários. 
 Além disso, inclui dois middlewares essenciais para **autenticação** 🔐 e **tratamento de erros** 🐛.
 
+https://github.com/armentanoc/Middleware/assets/88147887/ca733128-a67a-4c2a-a134-7269d635a829
+
 ## Controller de Usuário
 
 O `UserController` gerencia as operações CRUD para usuários.
