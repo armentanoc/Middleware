@@ -1,5 +1,6 @@
 using Middleware.Application;
 using Middleware.Infra;
+using Middleware.WebAPI.Middlewares;
 
 namespace Middleware.WebAPI
 {
@@ -43,6 +44,7 @@ namespace Middleware.WebAPI
 
                 app.UseAuthorization();
 
+                app.UseMiddleware<ErrorHandlingMiddleware>();
 
                 app.MapControllers();
 
