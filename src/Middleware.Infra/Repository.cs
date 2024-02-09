@@ -9,15 +9,17 @@ namespace Middleware.Infra
         private static int _nextId = 1;
         public bool Add(T entityToAdd)
         {
-            if (!_entities.Exists(existingEntity => existingEntity.Equals(entityToAdd)))
+            if (!_entities.Any(existingEntity => existingEntity.GetType().GetProperties()
+                .Where(prop => prop.Name != "Id")
+                .All(prop => object.Equals(prop.GetValue(existingEntity), prop.GetValue(entityToAdd)))))
             {
-                entityToAdd.Id = _nextId;
-                _nextId++;
+                entityToAdd.Id = _nextId++;
                 _entities.Add(entityToAdd);
                 return true;
             }
-            return false;
+            throw new Exception("User with same properties already exists.");
         }
+
 
         public T Get(int id)
         {
