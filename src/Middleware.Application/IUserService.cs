@@ -6,8 +6,8 @@ namespace Middleware.Application
     {
         bool Add(User user);
         bool Update(User user);
-        bool Delete(Guid id);
-        User Get(Guid id);
+        bool Delete(int id);
+        User Get(int id);
         IEnumerable<User> GetAll();
     }
 }

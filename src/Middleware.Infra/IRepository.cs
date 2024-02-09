@@ -6,8 +6,8 @@ namespace Middleware.Infra
     {
         bool Add(T entity);
         bool Update(T entity);
-        bool Delete(Guid id);
-        T Get(Guid id);
+        bool Delete(int id);
+        T Get(int id);
         IEnumerable<T> GetAll();
     }
 }

@@ -8,7 +8,6 @@ namespace Middleware.Domain
 
         public User(string name, string password, bool isAdmin)
         {
-            Id = Guid.NewGuid();
             Name = name;
             Password = password;
             IsAdmin = isAdmin;

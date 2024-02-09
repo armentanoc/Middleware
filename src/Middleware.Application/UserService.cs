@@ -17,7 +17,7 @@ namespace Middleware.Application
             return _userRepository.Add(user);
         }
 
-        public bool Delete(Guid id)
+        public bool Delete(int id)
         {
             return _userRepository.Delete(id);
         }
@@ -27,7 +27,7 @@ namespace Middleware.Application
             return _userRepository.GetAll();
         }
 
-        public User Get(Guid id)
+        public User Get(int id)
         {
             return _userRepository.Get(id);
         }

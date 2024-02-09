@@ -34,7 +34,7 @@ namespace Middleware.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] Guid id)
+        public IActionResult Delete([FromRoute] int id)
         {
             if (_userService.Delete(id))
                 return NoContent();
@@ -43,12 +43,12 @@ namespace Middleware.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get([FromRoute] Guid id)
+        public ActionResult Get([FromRoute] int id)
         {
-            if (_userService.Get(id) is User user)
-                return Ok(user);
-            else
-                return BadRequest();
+            if (_userService.Get(id) is not User user)
+                throw new Exception($"User with id {id} not found");
+            return Ok(user);
+            
         }
     }
 }
